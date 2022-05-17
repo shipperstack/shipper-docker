@@ -1,5 +1,4 @@
 .PHONY: all
 
 all:
-	docker build -t shipper_web backend/
-
+	docker build -t shipperstack/shipper:$SHIPPER_VERSION .
