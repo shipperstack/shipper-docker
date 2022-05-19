@@ -69,5 +69,8 @@ services:
 
 volumes:
   postgres_data:
+    name: shipper_postgres_data
   media_volume:
+    name: shipper_media_volume
   static_volume:
+    name: shipper_static_volume
