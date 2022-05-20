@@ -24,4 +24,4 @@ jobs:
         with:
           context: ./backend
           push: true
-          tags: ericswpark/shipper:${{ github.event.release.tag_name }}
+          tags: ericswpark/shipper:${{ github.event.client_payload.tag_version }}
