@@ -23,7 +23,7 @@ docker run --rm -it -v shipper_project_media_volume:/from -v shipper_media_volum
 docker volume rm shipper_project_media_volume
 ```
 
-Rinse and repeat for the `postgres` and `static` volumes as well, making sure to replace the volume names as necessary.
+Rinse and repeat for the `postgres` volume as well, making sure to replace the volume names as necessary. (The `static` volume can be deleted as the contents will be recreated.)
 
 
 ## Upgrade the database
