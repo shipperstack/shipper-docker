@@ -73,7 +73,7 @@ function setversion {
 
 function setlatest {
     export VERSION_TAG=$(curl -S -s -o /dev/null https://api.github.com/repos/shipperstack/shipper/releases/latest | python -c "import sys, json; print json.load(sys.stdin)['name']")
-    echo "GitHub: latest version available is $VERSION_TAG"
+    echo "The latest release on GitHub is $VERSION_TAG."
 }
 
 echo "Finished loading commands for shipper-docker. Run helpme for usage."
