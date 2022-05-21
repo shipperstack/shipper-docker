@@ -32,7 +32,4 @@ psql -U pdbuser -d shipper < {mapped_volume_folder_path}/dump.sql
 
 # Delete the dump file
 rm dump.sql
-
-# Delete the dump file in the container
-docker-compose exec db rm dump.sql
 ```
