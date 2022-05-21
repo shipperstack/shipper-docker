@@ -4,6 +4,10 @@ The format is based on [Keep a Changelog][keep-a-changelog].
 
 [keep-a-changelog]: https://keepachangelog.com/en/1.0.0/
 
+
+# [Unreleased]
+
+
 # [v2] - 2022-05-21
 
 ## Changed
@@ -16,5 +20,6 @@ Initial schema release.
 
 
 
+[Unreleased]: https://github.com/shipperstack/shipper-docker/compare/v2...HEAD
 [v2]: https://github.com/shipperstack/shipper-docker/compare/v1...v2
 [v1]: https://github.com/shipperstack/shipper-docker/compare/60b4c523a21a5f2ef8cfde27ff937437d7ad4521...v1
