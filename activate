@@ -2,7 +2,7 @@
 
 # To use this file, run `source activate` and `helpme` to view usage.
 
-helpme () {
+function helpme {
   cat <<HELP_USAGE
   Production:
     dc [options] => docker-compose [options]
