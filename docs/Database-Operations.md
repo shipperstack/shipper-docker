@@ -37,3 +37,25 @@ rm /var/lib/postgresql/data/dump.sql
 ```
 
 Make sure to substitute `shipper_postgres_data`, `pdbuser`, and `shipper` if you have customized those in the Docker Compose file or in the environment files.
+
+### I'm getting an authentication error from Django
+
+Sometimes, after loading from the dump, the server may display a 500 error, with the Django logs indicating an authentication problem connecting to the database. In this case, it could be that the database dump did not contain the correct authentication details or the details failed to carry over during the loading step.
+
+To fix this issue, simply set the password of the PostgreSQL user again with the credentials in `.env.db`, like so:
+
+```
+# Connect to the current database instance inside the Docker Compose file
+docker-compose exec db bash
+
+# Connect to PostgreSQL
+psql -U pdbuser
+
+# Change password
+ALTER USER pdbuser PASSWORD 'hunter2';
+
+# Exit
+\q
+```
+
+Make sure to substitute `pdbuser` and `hunter2` (obviously) from the environment files.
