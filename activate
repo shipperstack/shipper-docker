@@ -26,11 +26,40 @@ function helpme {
 HELP_USAGE
 }
 
-alias dc='docker-compose'
-alias dcup='docker-compose up -d'
-alias dcdown='docker-compose down'
+function is_shipper_version_tag_set {
+  if [ -z "$VERSION_TAG" ]; then
+    echo "Error: the version tag is not set. Stopping..."
+    return 1
+  fi
+  return 0
+}
+
+function dc {
+  if is_shipper_version_tag_set; then
+    docker-compose "$@"
+  fi 
+}
+
+function dcup {
+  if is_shipper_version_tag_set; then
+    docker-compose up -d "$@"
+  fi  
+}
+
+function dcdown {
+  if is_shipper_version_tag_set; then
+    docker-compose down "$@"
+  fi 
+}
+
 alias dcrestart='dcdown && dcup'
-alias dcx='docker-compose exec'
+
+function dcx {
+  if is_shipper_version_tag_set; then
+    docker-compose exec "$@"
+  fi
+}
+
 alias dcd='docker-compose -f docker-compose.dev.yml'
 alias dcdup='docker-compose -f docker-compose.dev.yml up -d --build'
 alias dcddown='docker-compose -f docker-compose.dev.yml down'
