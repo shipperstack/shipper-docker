@@ -22,7 +22,7 @@ To restore a dump of the database, first start up the shipper-docker instance an
 
 ```
 # Copy the dump file to the volume by spinning up a temporary Docker image (seriously Docker team why the hell do we have to do this?!)
-docker run --rm -v shipper_postgres_data:/target -v ${pwd}:/source alpine cp /source/dump.sql /target
+docker run --rm -v shipper_postgres_data:/target -v $(pwd):/source alpine cp /source/dump.sql /target
 
 # Connect to the current database instance inside the Docker Compose file
 docker-compose exec db bash
