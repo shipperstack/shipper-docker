@@ -16,6 +16,8 @@ docker-compose exec db pg_dumpall -U pdbuser > dump.sql
 
 Make sure to substitute `db` and `pdbuser` if you have customized those in the Docker Compose file.
 
+You should now have a dump file called `dump.sql` in your current directory. Now is the time to make any changes, such as deleting the database volume, upgrading the PostgreSQL version, and so on. If you have made the necessary changes, move on to the next section.
+
 ## Restore
 
 To restore a dump of the database, first start up the shipper-docker instance and make sure the PostgreSQL database is running. Make sure you are in the directory with the `dump.sql` file. Execute:
