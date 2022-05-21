@@ -28,8 +28,8 @@ docker run --rm -v shipper_postgres_data:/target -v $(pwd):/source alpine cp /so
 docker-compose exec db bash
 
 # Import
-psql -U pdbuser -d shipper < {mapped_volume_folder_path}/dump.sql
+psql -U pdbuser -d shipper < /var/lib/postgresql/data/dump.sql
 
 # Delete the dump file
-rm dump.sql
+rm /var/lib/postgresql/data/dump.sql
 ```
