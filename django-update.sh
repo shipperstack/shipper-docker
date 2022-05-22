@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Check developer argument
-if [ $# == 1 ]; then
-    if [ $1 = "developer" ]; then
+if [ "$#" == 1 ]; then
+    if [ "$1" = "developer" ]; then
         developer=true
     else
         developer=false
