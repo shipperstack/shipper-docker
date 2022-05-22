@@ -7,7 +7,8 @@ RUN apt update \
         python3 \
         python3-pip \
         netcat \
-        gettext
+        gettext \
+        git
 
 # Upgrade pip
 RUN pip install --upgrade pip
