@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Check developer argument
 if [ "$#" == 1 ]; then
