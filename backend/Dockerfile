@@ -43,4 +43,4 @@ USER shipper
 
 # Entrypoint
 COPY ./entrypoint.sh $APP_HOME
-ENTRYPOINT ["sh", "-c", "$APP_HOME/entrypoint.sh"]
+ENTRYPOINT ["/home/shipper/web/entrypoint.sh"]
