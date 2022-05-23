@@ -5,7 +5,7 @@ version: "3.8"
 services:
   web:
     build:
-      context: .
+      context: ./backend
       dockerfile: Dockerfile
     command: gunicorn config.wsgi:application --bind 0.0.0.0:8000 --capture-output --timeout 360 --log-level debug
     volumes:
@@ -40,7 +40,8 @@ services:
   celery:
     restart: always
     build:
-      context: .
+      context: ./backend
+      dockerfile: Dockerfile
     command: celery -A shipper worker -l info
     volumes:
       - media_volume:/home/shipper/web/media
@@ -54,7 +55,8 @@ services:
   celery_beat:
     restart: always
     build:
-      context: .
+      context: ./backend
+      dockerfile: Dockerfile
     command: celery -A shipper beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
     volumes:
       - media_volume:/home/shipper/web/media
