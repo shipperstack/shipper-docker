@@ -17,6 +17,7 @@ function helpme {
   The setlatest command requires curl and python to be installed.
 
   Development:
+    devmode => Sets the COMPOSE_PROJECT_NAME environment variable.
     dcd [options] => docker-compose -f docker-compose.dev.yml [options]
     dcdup => Builds the development Docker container using the docker-compose.dev.yml file
     dcddown => Destroys the development Docker container
@@ -60,6 +61,7 @@ function dcx {
   fi
 }
 
+alias devmode='export COMPOSE_PROJECT_NAME="shipper_dev"'
 alias dcd='docker-compose -f docker-compose.dev.yml'
 alias dcdup='docker-compose -f docker-compose.dev.yml up -d --build'
 alias dcddown='docker-compose -f docker-compose.dev.yml down'
