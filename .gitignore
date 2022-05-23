@@ -7,3 +7,6 @@ ssh/
 
 # Ignore nginx .htpasswd
 nginx/.htpasswd
+
+# Ignore dev directory
+dev/
