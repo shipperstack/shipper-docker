@@ -32,8 +32,8 @@ services:
     - media_volume:/home/shipper/web/media
     - static_volume:/home/shipper/web/static
     ports:
-      - "9200:80"
-      - "9201:81"
+      - "9202:80"
+      - "9203:81"
     depends_on:
       - web
       - flower
@@ -72,6 +72,8 @@ services:
   flower:
     image: mher/flower:latest
     command: celery --broker=pyamqp://rabbitmq:5672/ flower --port=5555 --purge_offline_workers=5
+    ports:
+      - 5556:5555
     depends_on:
       - rabbitmq
 
