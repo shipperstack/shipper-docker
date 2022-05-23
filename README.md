@@ -25,3 +25,9 @@ docker-compose -f docker-compose.dev.yml up -d --build
 ## Documentation
 
 Detailed documentation [is available here.](docs/)
+
+## Warning
+
+Do not run the production environment and the development environment from the same directory. Docker Compose uses the folder name as a prefix for the containers that are created, which can potentially cause a conflict. As a result, you may end up destroying a set of containers from one environment when settting up the set of containers for the other environment!
+
+If you *must* use the same directory for both environments, consider prefixing your Docker Compose commands with `COMPOSE_PROJECT_NAME` in order to change the prefix used. (Or, export the environment flag before running Docker Compose commands.)
