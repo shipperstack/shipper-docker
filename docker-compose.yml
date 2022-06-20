@@ -1,4 +1,4 @@
-# v2
+# v3
 
 version: "3.8"
 
@@ -38,7 +38,7 @@ services:
   celery:
     restart: always
     image: ericswpark/shipper:${VERSION_TAG}
-    command: celery -A shipper worker -l info
+    command: celery -A core worker -l info
     volumes:
       - media_volume:/home/shipper/web/media
       - ./ssh/:/home/shipper/ssh
