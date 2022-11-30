@@ -32,6 +32,8 @@ services:
     ports:
       - "9200:80"
       - "9201:81"
+    healthcheck:
+      test: curl --fail http://localhost/api/v1/system/info/ || exit 1
     depends_on:
       - web
       - flower
