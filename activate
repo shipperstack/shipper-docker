@@ -24,6 +24,7 @@ function helpme {
     dcdrestart => Destroys and builds a new development Docker container
     dcdx <subsystem> [command] => docker-compose -f docker-compose.dev.yml exec <subsystem> [command]
     dcdsetup => Runs the setup commands within the development Docker container
+    dcdbuild => Rebuilds the development Docker container without using the cache
     dcdresetall => Deletes all Docker volumes of the development environment
 HELP_USAGE
 }
@@ -86,6 +87,7 @@ alias dcddown='docker-compose -f docker-compose.dev.yml down'
 alias dcdrestart='dcddown && dcdup'
 alias dcdx='docker-compose -f docker-compose.dev.yml exec'
 alias dcdsetup='./django-update.sh'
+alias dcdbuild='docker-compose -f docker-compose.dev.yml build --no-cache'
 
 function dcdresetall {
   echo "Deleting all development Docker volumes..."
