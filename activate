@@ -27,6 +27,10 @@ function helpme {
 HELP_USAGE
 }
 
+##############
+# Production #
+##############
+
 function is_shipper_version_tag_set {
   if [ -z "$VERSION_TAG" ]; then
     echo "Error: the version tag is not set. Stopping..."
@@ -61,14 +65,6 @@ function dcx {
   fi
 }
 
-alias devmode='export COMPOSE_PROJECT_NAME="shipper_dev"'
-alias dcd='docker-compose -f docker-compose.dev.yml'
-alias dcdup='docker-compose -f docker-compose.dev.yml up -d --build'
-alias dcddown='docker-compose -f docker-compose.dev.yml down'
-alias dcdrestart='dcddown && dcdup'
-alias dcdx='docker-compose -f docker-compose.dev.yml exec'
-alias dcdsetup='./django-update.sh'
-
 function setversion {
   export VERSION_TAG=$1
 }
@@ -77,5 +73,19 @@ function setlatest {
     export VERSION_TAG=$(curl -s https://api.github.com/repos/shipperstack/shipper/releases/latest | python -c "import sys, json; print json.load(sys.stdin)['name']")
     echo "The latest release on GitHub is $VERSION_TAG."
 }
+
+###############
+# Development #
+###############
+
+alias devmode='export COMPOSE_PROJECT_NAME="shipper_dev"'
+alias dcd='docker-compose -f docker-compose.dev.yml'
+alias dcdup='docker-compose -f docker-compose.dev.yml up -d --build'
+alias dcddown='docker-compose -f docker-compose.dev.yml down'
+alias dcdrestart='dcddown && dcdup'
+alias dcdx='docker-compose -f docker-compose.dev.yml exec'
+alias dcdsetup='./django-update.sh'
+
+
 
 echo "Finished loading commands for shipper-docker. Run helpme for usage."
