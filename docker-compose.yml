@@ -4,7 +4,7 @@ version: "3.8"
 
 services:
   web:
-    image: ericswpark/shipper:${VERSION_TAG}
+    image: ghcr.io/shipperstack/shipper-docker/shipper:${VERSION_TAG}
     command: gunicorn config.wsgi:application --bind 0.0.0.0:8000 --capture-output --timeout 360 --log-level debug
     volumes:
     - media_volume:/home/shipper/web/media
@@ -39,7 +39,7 @@ services:
       - flower
   celery:
     restart: always
-    image: ericswpark/shipper:${VERSION_TAG}
+    image: ghcr.io/shipperstack/shipper-docker/shipper:${VERSION_TAG}
     command: celery -A core worker -l info
     volumes:
       - media_volume:/home/shipper/web/media
@@ -52,7 +52,7 @@ services:
       - web
   celery_beat:
     restart: always
-    image: ericswpark/shipper:${VERSION_TAG}
+    image: ghcr.io/shipperstack/shipper-docker/shipper:${VERSION_TAG}
     command: celery -A core beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
     volumes:
       - media_volume:/home/shipper/web/media
