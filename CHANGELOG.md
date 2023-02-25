@@ -7,6 +7,14 @@ The format is based on [Keep a Changelog][keep-a-changelog].
 
 # [Unreleased]
 
+
+
+# [v5] - 2023-02-25
+
+## Changed
+- Fixed `django-celery-beat` crashing because of the incorrect app name
+
+
 # [v4] - 2022-11-30
 
 ## Added
@@ -31,7 +39,8 @@ Initial schema release.
 
 
 
-[Unreleased]: https://github.com/shipperstack/shipper-docker/compare/v4...HEAD
+[Unreleased]: https://github.com/shipperstack/shipper-docker/compare/v5...HEAD
+[v5]: https://github.com/shipperstack/shipper-docker/compare/v4...v5
 [v4]: https://github.com/shipperstack/shipper-docker/compare/v3...v4
 [v3]: https://github.com/shipperstack/shipper-docker/compare/v2...v3
 [v2]: https://github.com/shipperstack/shipper-docker/compare/v1...v2
