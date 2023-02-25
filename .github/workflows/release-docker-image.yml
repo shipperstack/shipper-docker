@@ -21,7 +21,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ghcr.io/shipperstack/shipper-docker/shipper
-          tags: type=semver,pattern={{major}}.{{minor}}.{{patch}}
+          tags: type=semver,pattern={{version}},value=${{ github.event.client_payload.tag_version }}
       - name: Login to GitHub Packages
         uses: docker/login-action@v2
         with:
