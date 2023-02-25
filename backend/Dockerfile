@@ -1,24 +1,25 @@
-FROM ubuntu:22.04
+FROM alpine:3.17
 
 # Install base dependencies
-RUN apt update \
-  && apt upgrade -y \
-  && apt install -y --no-install-recommends \
+RUN apk update \
+  && apk upgrade \
+  && apk add --no-cache \
         python3 \
-        python3-pip \
-        netcat \
+        python3-dev \
+        py3-pip \
+        netcat-openbsd \
         gettext \
         git
 
 # Upgrade pip
-RUN pip install --upgrade pip
+RUN pip3 install --upgrade pip
 
 # Python environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Create the shipper user
-RUN useradd --create-home shipper
+RUN adduser --disabled-password --home /home/shipper --shell /bin/sh shipper
 
 # Environment and work directory setup
 ENV HOME=/home/shipper
@@ -29,7 +30,7 @@ WORKDIR $APP_HOME
 RUN git clone --depth 1 https://github.com/shipperstack/shipper .
 
 # Install Python dependencies
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 # Create mountpoints
 RUN mkdir -p $APP_HOME/media && \
