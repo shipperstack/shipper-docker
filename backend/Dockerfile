@@ -26,8 +26,11 @@ ENV HOME=/home/shipper
 ENV APP_HOME=/home/shipper/web
 WORKDIR $APP_HOME
 
+# Allow setting a custom branch to download
+ARG BRANCH=master
+
 # Download actual code
-RUN git clone --depth 1 https://github.com/shipperstack/shipper .
+RUN git clone --branch $BRANCH --depth 1 https://github.com/shipperstack/shipper .
 
 # Install Python dependencies
 RUN pip3 install -r requirements.txt
