@@ -27,7 +27,7 @@ ENV APP_HOME=/home/shipper/web
 WORKDIR $APP_HOME
 
 # Allow setting a custom branch to download
-ARG BRANCH=master
+ARG BRANCH
 
 # Download actual code
 RUN git clone --branch $BRANCH --depth 1 https://github.com/shipperstack/shipper .
