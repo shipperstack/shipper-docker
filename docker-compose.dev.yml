@@ -44,6 +44,8 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+      args:
+        BRANCH: ${SHIPPER_DEV_TARGET_REF:-master}
     command: celery -A core worker -l info
     volumes:
       - media_volume:/home/shipper/web/media
@@ -59,6 +61,8 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+      args:
+        BRANCH: ${SHIPPER_DEV_TARGET_REF:-master}
     command: celery -A core beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
     volumes:
       - media_volume:/home/shipper/web/media
