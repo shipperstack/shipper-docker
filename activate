@@ -26,6 +26,7 @@ function helpme {
     dcdsetup => Runs the setup commands within the development Docker container
     dcdbuild => Rebuilds the development Docker container without using the cache
     dcdresetall => Deletes all Docker volumes of the development environment
+    setdevref <ref> => Sets the developer target reference. Can be a branch, tag, or specific commit hash.
 HELP_USAGE
 }
 
@@ -95,6 +96,10 @@ function dcdresetall {
   docker volume rm ${COMPOSE_PROJECT_NAME}_static_volume
   docker volume rm ${COMPOSE_PROJECT_NAME}_postgres_data
   echo "Finished deleting all development Docker volumes!"
+}
+
+function setdevref {
+  export SHIPPER_DEV_TARGET_REF=$1
 }
 
 
