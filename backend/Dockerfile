@@ -32,6 +32,9 @@ ARG BRANCH=master
 # Download actual code
 RUN git clone --branch $BRANCH --depth 1 https://github.com/shipperstack/shipper .
 
+# Install Python dependencies
+RUN pip3 install -r requirements.txt
+
 # Create mountpoints
 RUN mkdir -p $APP_HOME/media && \
     mkdir -p $APP_HOME/static
@@ -41,9 +44,6 @@ RUN chown -R shipper:shipper $APP_HOME
 
 # Change to the shipper user
 USER shipper
-
-# Install Python dependencies
-RUN pip3 install -r requirements.txt
 
 # Entrypoint
 COPY ./entrypoint.sh $APP_HOME
