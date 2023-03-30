@@ -5,6 +5,8 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+      args:
+        BRANCH: ${SHIPPER_DEV_TARGET_REF:-master}
     command: gunicorn config.wsgi:application --bind 0.0.0.0:8000 --capture-output --timeout 360 --log-level debug
     volumes:
     - media_volume:/home/shipper/web/media
