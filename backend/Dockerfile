@@ -9,7 +9,8 @@ RUN apk update \
         py3-pip \
         netcat-openbsd \
         gettext \
-        git
+        git \
+        postgresql-client
 
 # Upgrade pip
 RUN pip3 install --upgrade pip
