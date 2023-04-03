@@ -99,3 +99,16 @@ ALTER USER pdbuser PASSWORD 'hunter2';
 ```
 
 Make sure to substitute `pdbuser` and `hunter2` (obviously) from the environment files.
+
+## Using Docker volumes
+
+You can back up the entire Docker volume to make a backup of the database.
+
+Note that PostgreSQL database backups made using this method are not usable on different versions! In short, you won't be able to take a backup made on 14.3 and use it on 15.2, or anything like that.
+
+```
+docker volume create --name shipper_postgres_data_backup_ver
+docker run --rm -it -v shipper_postgres_data:/from -v shipper_postgres_data_backup_ver:/to alpine ash -c "cd /from ; cp -av . /to"
+# If starting over
+docker volume rm shipper_postgres_data
+```
