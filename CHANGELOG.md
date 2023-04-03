@@ -7,11 +7,25 @@ The format is based on [Keep a Changelog][keep-a-changelog].
 
 # [Unreleased]
 
+[Unreleased]: https://github.com/shipperstack/shipper-docker/compare/v7...HEAD
+
+
+# [v7] - 2023-04-04
+
+This release requires a database migration!
+
+## Changed
+- Updated PostgreSQL to 15.2
+
+[v7]: https://github.com/shipperstack/shipper-docker/compare/v6...v7
+
 
 # [v6] - 2023-02-25
 
 ## Changed
 - Use GitHub Packages instead of DockerHub
+
+[v6]: https://github.com/shipperstack/shipper-docker/compare/v5...v6
 
 
 # [v5] - 2023-02-25
@@ -43,9 +57,6 @@ The format is based on [Keep a Changelog][keep-a-changelog].
 Initial schema release.
 
 
-
-[Unreleased]: https://github.com/shipperstack/shipper-docker/compare/v6...HEAD
-[v6]: https://github.com/shipperstack/shipper-docker/compare/v5...v6
 [v5]: https://github.com/shipperstack/shipper-docker/compare/v4...v5
 [v4]: https://github.com/shipperstack/shipper-docker/compare/v3...v4
 [v3]: https://github.com/shipperstack/shipper-docker/compare/v2...v3
