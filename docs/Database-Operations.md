@@ -28,6 +28,7 @@ docker-compose cp web:/tmp/shipper-backup/<FILE NAME HERE> .
 Copy the file back into the container:
 
 ```
+docker-compose exec web mkdir -p /tmp/shipper-backup
 docker-compose cp ./<FILE NAME HERE> web:/tmp/shipper-backup/
 ```
 
