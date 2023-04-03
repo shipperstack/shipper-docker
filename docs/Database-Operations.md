@@ -1,6 +1,46 @@
 # Database Operations
 
-## Dump
+## Using `django-dbbackup`
+
+### Dump
+
+To create a dump of the database, make sure that the web and database services are running. If they are not running, start them with:
+
+```
+docker-compose up -d web db
+```
+
+Then run:
+
+```
+docker-compose exec web python3 manage.py dbbackup
+docker-compose exec web ls /tmp/shipper-backup
+```
+
+Copy the file name, and then use the following command to copy the backup file to your host:
+
+```
+docker-compose cp web:/tmp/shipper-backup/<FILE NAME HERE> .
+```
+
+### Restore
+
+Copy the file back into the container:
+
+```
+docker-compose cp ./<FILE NAME HERE> web:/tmp/shipper-backup/
+```
+
+Then restore using the following command:
+
+```
+docker-compose exec web dbrestore
+```
+
+
+## Using raw PostgreSQL
+
+### Dump
 
 To create a dump of the database, make sure the database service is first running. If it is not running, start it with:
 
@@ -18,7 +58,7 @@ Make sure to substitute `db` and `pdbuser` if you have customized those in the D
 
 You should now have a dump file called `dump.sql` in your current directory. Now is the time to make any changes, such as deleting the database volume, upgrading the PostgreSQL version, and so on. If you have made the necessary changes, move on to the next section.
 
-## Restore
+### Restore
 
 To restore a dump of the database, first start up the shipper-docker instance and make sure the PostgreSQL database is running. Make sure you are in the directory with the `dump.sql` file. Execute:
 
@@ -38,7 +78,7 @@ rm /var/lib/postgresql/data/dump.sql
 
 Make sure to substitute `shipper_postgres_data`, `pdbuser`, and `shipper` if you have customized those in the Docker Compose file or in the environment files.
 
-### I'm getting an authentication error from Django
+#### I'm getting an authentication error from Django
 
 Sometimes, after loading from the dump, the server may display a 500 error, with the Django logs indicating an authentication problem connecting to the database. In this case, it could be that the database dump did not contain the correct authentication details or the details failed to carry over during the loading step.
 
