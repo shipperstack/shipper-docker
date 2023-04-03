@@ -2,6 +2,12 @@
 
 ## Using `django-dbbackup`
 
+### Warning
+
+This method is still in beta! The restore may not be successful.
+
+Please back up using alternative methods before doing anything destructive, like deleting the main database volume!
+
 ### Dump
 
 To create a dump of the database, make sure that the web and database services are running. If they are not running, start them with:
