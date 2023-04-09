@@ -81,7 +81,7 @@ function setlatest {
 # Development #
 ###############
 
-alias devmode='export COMPOSE_PROJECT_NAME="shipper_dev"'
+alias devmode='export COMPOSE_PROJECT_NAME="shipper_dev" && echo "Developer mode is now active!"'
 alias dcd='docker-compose -f docker-compose.dev.yml'
 alias dcdup='docker-compose -f docker-compose.dev.yml up -d --build'
 alias dcddown='docker-compose -f docker-compose.dev.yml down'
