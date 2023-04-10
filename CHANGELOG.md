@@ -7,7 +7,16 @@ The format is based on [Keep a Changelog][keep-a-changelog].
 
 # [Unreleased]
 
-[Unreleased]: https://github.com/shipperstack/shipper-docker/compare/v8...HEAD
+[Unreleased]: https://github.com/shipperstack/shipper-docker/compare/v9...HEAD
+
+
+# [v9] - 2023-04-10
+
+## Changed
+- Fixed missing concurrency parameter for the mirror upload queue
+
+
+[v9]: https://github.com/shipperstack/shipper-docker/compare/v8...v9
 
 
 # [v8] - 2023-04-10
