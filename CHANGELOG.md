@@ -7,7 +7,16 @@ The format is based on [Keep a Changelog][keep-a-changelog].
 
 # [Unreleased]
 
-[Unreleased]: https://github.com/shipperstack/shipper-docker/compare/v7...HEAD
+[Unreleased]: https://github.com/shipperstack/shipper-docker/compare/v8...HEAD
+
+
+# [v8] - 2023-04-10
+
+## Added
+- Added a new Celery instance to handle the mirror upload queue
+
+
+[v8]: https://github.com/shipperstack/shipper-docker/compare/v7...v8
 
 
 # [v7] - 2023-04-04
@@ -16,6 +25,7 @@ This release requires a database migration!
 
 ## Changed
 - Updated PostgreSQL to 15.2
+
 
 [v7]: https://github.com/shipperstack/shipper-docker/compare/v6...v7
 
