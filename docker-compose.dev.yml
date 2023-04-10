@@ -39,14 +39,31 @@ services:
     depends_on:
       - web
       - flower
-  celery:
+  celery_default:
     restart: unless-stopped
     build:
       context: ./backend
       dockerfile: Dockerfile
       args:
         BRANCH: ${SHIPPER_DEV_TARGET_REF:-master}
-    command: celery -A core worker -l info
+    command: celery -A core worker -l info -Q default
+    volumes:
+      - media_volume:/home/shipper/web/media
+      - ./dev/ssh/:/home/shipper/ssh
+    env_file:
+      - ./dev/.env
+    depends_on:
+      - db
+      - rabbitmq
+      - web
+  celery_mirror_upload_queue:
+    restart: unless-stopped
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      args:
+        BRANCH: ${SHIPPER_DEV_TARGET_REF:-master}
+    command: celery -A core worker -l info -Q mirror_upload --concurrency=1
     volumes:
       - media_volume:/home/shipper/web/media
       - ./dev/ssh/:/home/shipper/ssh
