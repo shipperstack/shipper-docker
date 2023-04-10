@@ -53,7 +53,7 @@ services:
   celery_mirror_upload_queue:
     restart: unless-stopped
     image: ghcr.io/shipperstack/shipper-docker/shipper:${VERSION_TAG}
-    command: celery -A core worker -l info -Q mirror_upload
+    command: celery -A core worker -l info -Q mirror_upload --concurrency=1
     volumes:
       - media_volume:/home/shipper/web/media
       - ./ssh/:/home/shipper/ssh
