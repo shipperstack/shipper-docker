@@ -37,10 +37,23 @@ services:
     depends_on:
       - web
       - flower
-  celery:
+  celery_default:
     restart: unless-stopped
     image: ghcr.io/shipperstack/shipper-docker/shipper:${VERSION_TAG}
-    command: celery -A core worker -l info
+    command: celery -A core worker -l info -Q default
+    volumes:
+      - media_volume:/home/shipper/web/media
+      - ./ssh/:/home/shipper/ssh
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+      - rabbitmq
+      - web
+  celery_mirror_upload_queue:
+    restart: unless-stopped
+    image: ghcr.io/shipperstack/shipper-docker/shipper:${VERSION_TAG}
+    command: celery -A core worker -l info -Q mirror_upload
     volumes:
       - media_volume:/home/shipper/web/media
       - ./ssh/:/home/shipper/ssh
