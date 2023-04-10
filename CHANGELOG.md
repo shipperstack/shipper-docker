@@ -7,7 +7,16 @@ The format is based on [Keep a Changelog][keep-a-changelog].
 
 # [Unreleased]
 
-[Unreleased]: https://github.com/shipperstack/shipper-docker/compare/v9...HEAD
+[Unreleased]: https://github.com/shipperstack/shipper-docker/compare/v10...HEAD
+
+
+# [v10] - 2023-04-10
+
+## Changed
+- Fixed registering the core app to the flower service
+
+
+[v10]: https://github.com/shipperstack/shipper-docker/compare/v9...v10
 
 
 # [v9] - 2023-04-10
