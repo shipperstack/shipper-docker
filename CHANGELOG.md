@@ -7,7 +7,16 @@ The format is based on [Keep a Changelog][keep-a-changelog].
 
 # [Unreleased]
 
-[Unreleased]: https://github.com/shipperstack/shipper-docker/compare/v11...HEAD
+[Unreleased]: https://github.com/shipperstack/shipper-docker/compare/v12...HEAD
+
+
+# [v12] - 2023-04-28
+
+## Added
+- Added memcached
+
+[v12]: https://github.com/shipperstack/shipper-docker/compare/v11...v12
+
 
 
 # [v11] - 2023-04-10
