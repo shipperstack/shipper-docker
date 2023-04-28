@@ -16,6 +16,7 @@ services:
       - ./.env
     depends_on:
       - db
+      - memcached
   db:
     image: postgres:15.2-alpine
     volumes:
@@ -83,6 +84,8 @@ services:
     command: celery --broker=pyamqp://rabbitmq:5672/ flower --port=5555 --purge_offline_workers=5
     depends_on:
       - rabbitmq
+  memcached:
+    image: memcached:1.6-alpine
 
 volumes:
   postgres_data:
